@@ -3,9 +3,9 @@ server:
 spring:
   rabbitmq:
       host: localhost
-      port: 5672
-      username: fangp
-      password: '000000'
+      port: 15672
+      username: guest
+      password: guest
   boot:
       admin:
         turbine:

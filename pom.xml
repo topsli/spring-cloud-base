@@ -31,6 +31,7 @@
         <module>config-git</module>
         <module>visul</module>
         <module>mc-service</module>
+        <module>server-center</module>
     </modules>
 
     <dependencyManagement>

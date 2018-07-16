@@ -4,9 +4,9 @@ server:
 spring:
   rabbitmq:
     host: localhost
-    port: 5672
-    password: '000000'
-    username: fangp
+    port: 15672
+    password: guest
+    username: guest
 
 zuul:
   routes:

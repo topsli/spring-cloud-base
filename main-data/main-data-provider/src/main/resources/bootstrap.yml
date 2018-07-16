@@ -4,11 +4,11 @@ spring:
   profiles:
     active: dev
   cloud:
-    consul:
-      host: ${CONSUL_HOST:localhost}
-      port: ${CONSUL_PORT:8500}
-      discovery:
-        prefer-ip-address: true
+#    consul:
+#      host: ${CONSUL_HOST:localhost}
+#      port: ${CONSUL_PORT:8500}
+#      discovery:
+#        prefer-ip-address: true
     config:
       fail-fast: true
       discovery:
@@ -16,3 +16,8 @@ spring:
         enabled: true
       profile: ${spring.profiles.active}
       label: ${spring.profiles.active}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8001/eureka/

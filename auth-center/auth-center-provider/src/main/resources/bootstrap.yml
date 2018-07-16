@@ -1,16 +1,23 @@
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8001/eureka/
+
 spring:
   application:
     name: auth-center
   profiles:
     active: dev
   cloud:
-    consul:
-      host: ${CONSUL_HOST:localhost}
-      port: ${CONSUL_PORT:8500}
-      discovery:
-        prefer-ip-address: true
-        health-check-path: ${server.context-path}/health
-        tags: management.context-path=${server.context-path}
+#    consul:
+#      host: ${CONSUL_HOST:localhost}
+#      port: ${CONSUL_PORT:8500}
+#      discovery:
+#        prefer-ip-address: true
+#        health-check-path: ${server.context-path}/health
+#        tags: management.context-path=${server.context-path}
     config:
       fail-fast: true
       discovery:

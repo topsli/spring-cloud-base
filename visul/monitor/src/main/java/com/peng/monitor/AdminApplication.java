@@ -7,6 +7,7 @@ import de.codecentric.boot.admin.notify.RemindingNotifier;
 import de.codecentric.boot.admin.notify.filter.FilteringNotifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.turbine.EnableTurbine;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by fp295 on 2018/6/26.
  */
+@EnableEurekaClient
 @SpringCloudApplication
 @EnableAdminServer
 @EnableTurbine
