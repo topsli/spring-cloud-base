@@ -8,7 +8,7 @@
 <style type="text/css">
     body {
         /*background-color: #364150;*/
-        background-image: url("static/img/background.jpg");
+        background-image: url("../static/img/background.jpg");
         background-repeat: no-repeat;
         background-size: 100% 100%;
     }
@@ -58,7 +58,7 @@
     <div class="column transition hidden">
         <form id="form" class="ui large form" action="login" method="post" style="border: 0">
             <div class="ui stacked segment">
-                <h3 class="title"> 授权中心 </h3>
+                <h3 class="title"> ITSNOW授权中心 </h3>
                 <div class="field item">
                     <div class="ui left icon input">
                         <i class="user icon"></i>
@@ -81,7 +81,7 @@
 
         <form id="form1" class="ui large form transition hidden" action="login" method="post" style="border: 0;">
             <div class="ui stacked segment">
-                <h3 class="title"> 授权中心 </h3>
+                <h3 class="title"> ITSNOW授权中心 </h3>
                 <div class="field item">
                     <div class="ui left icon input">
                         <i class="mobile icon"></i>
