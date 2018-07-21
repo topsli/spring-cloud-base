@@ -69,7 +69,7 @@
                 <div class="field item" style="height: 80px">
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
-                        <input type="password" id="password" name="password" placeholder="密码" value="123456">
+                        <input type="password" id="password" name="password" placeholder="密码" value="111111">
                     </div>
                     <div class="other">忘记密码？试试 &nbsp;<a href="javascript:void(0);" onclick="change_yzm()"><i class="mobile icon"></i>验证码登陆</a>|<a><i class="qrcode icon"></i>扫码登陆</a></div>
                 </div>

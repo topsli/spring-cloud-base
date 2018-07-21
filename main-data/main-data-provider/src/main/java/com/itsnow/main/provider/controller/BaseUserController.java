@@ -66,7 +66,7 @@ public class BaseUserController extends CrudController<BaseUser, BaseUserRequest
             return new ResponseData<>(ResponseCode.ERROR.getCode(), ResponseCode.ERROR.getMessage());
         }
         BaseUser baseUser = new BaseUser();
-        baseUser.setPhone(phone);
+        baseUser.setUserMobile(phone);
         baseUser = baseUserService.selectOne(baseUser);
         return new ResponseData<>(ResponseCode.SUCCESS.getCode(), ResponseCode.SUCCESS.getMessage(), baseUser);
     }
@@ -81,8 +81,8 @@ public class BaseUserController extends CrudController<BaseUser, BaseUserRequest
         if(!StringUtils.isEmpty(query.getUserName())) {
             criteria.andLike("userName", "%" + query.getUserName() + "%");
         }
-        if(!StringUtils.isEmpty(query.getPhone())) {
-            criteria.andLike("phone", "%" + query.getPhone() + "%");
+        if(!StringUtils.isEmpty(query.getUserMobile())) {
+            criteria.andLike("phone", "%" + query.getUserMobile() + "%");
         }
 
         PageInfo<BaseUser> pageInfo = baseUserService.selectByExampleList(example, query.getPageNum(), query.getPageSize());
@@ -96,8 +96,8 @@ public class BaseUserController extends CrudController<BaseUser, BaseUserRequest
         logger.debug("添加用户");
         try {
             logger.debug("用户密码加密");
-            record.setId(UUID.uuid32());
-            record.setCreateDate(new Date());
+            //record.setId(UUID.uuid32());
+            record.setCreatedAt(new Date());
             record.setPassword(new BCryptPasswordEncoder(6).encode(record.getPassword()));
             baseUserService.insertSelective(record);
         } catch (Exception e) {
@@ -128,7 +128,7 @@ public class BaseUserController extends CrudController<BaseUser, BaseUserRequest
         logger.debug("更新用户");
         try {
             record.setPassword(null);
-            record.setUpdateDate(new Date());
+            record.setUpdatedAt(new Date());
             baseUserService.updateByPrimaryKeySelective(record);
         } catch (Exception e) {
             logger.error("更新用户失败：" + e.getMessage());
@@ -201,7 +201,7 @@ public class BaseUserController extends CrudController<BaseUser, BaseUserRequest
     public ResponseData<BaseUser> validatePhone(@PathVariable("phone") String phone) {
         logger.debug("校验手机号码是否存在");
         BaseUser baseUser = new BaseUser();
-        baseUser.setPhone(phone);
+        baseUser.setUserMobile(phone);
         baseUser = baseUserService.selectOne(baseUser);
         if(baseUser == null) {
             return new ResponseData<>(ResponseCode.SUCCESS.getCode(), ResponseCode.SUCCESS.getMessage());

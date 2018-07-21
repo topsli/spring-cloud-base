@@ -61,7 +61,7 @@ public class MyAuthenticationProvider extends MyAbstractUserDetailsAuthenticatio
             }
             else {
                 // 用户名密码验证
-                if(!this.passwordEncoder.isPasswordValid(userDetails.getPassword(), presentedPassword, salt)) {
+                if(!this.passwordEncoder.isPasswordValid(userDetails.getPassword(), presentedPassword, null)) {
                     this.logger.debug("Authentication failed: password does not match stored value");
                     throw new BadCredentialsException(this.messages.getMessage("MyAbstractUserDetailsAuthenticationProvider.badCredentials", "Bad credentials"));
                 }

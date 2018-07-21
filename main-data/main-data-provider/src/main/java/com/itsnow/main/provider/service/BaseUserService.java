@@ -31,9 +31,9 @@ public class BaseUserService extends BaseService<BaseUser>{
     public void resetPassword(List<BaseUser> record, String newPassword) {
         record.forEach(e -> {
             BaseUser baseUser = new BaseUser();
-            baseUser.setId(e.getId());
+            baseUser.setUserId(e.getUserId());
             baseUser.setPassword(new BCryptPasswordEncoder(6).encode(newPassword));
-            baseUser.setUpdateDate(new Date());
+            baseUser.setUpdatedAt(new Date());
             updateByPrimaryKeySelective(baseUser);
         });
     }

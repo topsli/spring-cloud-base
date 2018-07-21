@@ -80,7 +80,7 @@ public class BaseUserDetailService implements UserDetailsService {
 
 
         // 调用FeignClient查询角色
-        ResponseData<List<BaseRole>> baseRoleListResponseData = baseRoleService.getRoleByUserId(baseUser.getId());
+        ResponseData<List<BaseRole>> baseRoleListResponseData = baseRoleService.getRoleByUserId(baseUser.getUserId()+"");
         List<BaseRole> roles;
         if(baseRoleListResponseData.getData() == null ||  !ResponseCode.SUCCESS.getCode().equals(baseRoleListResponseData.getCode())){
             logger.error("查询角色失败！");
@@ -90,22 +90,22 @@ public class BaseUserDetailService implements UserDetailsService {
         }
 
         //调用FeignClient查询菜单
-        ResponseData<List<BaseModuleResources>> baseModuleResourceListResponseData = baseModuleResourceService.getMenusByUserId(baseUser.getId());
+        ResponseData<List<BaseModuleResources>> baseModuleResourceListResponseData = baseModuleResourceService.getMenusByUserId(baseUser.getUserId()+"");
 
         // 获取用户权限列表
         List<GrantedAuthority> authorities = convertToAuthorities(baseUser, roles);
 
         // 存储菜单到redis
         if( ResponseCode.SUCCESS.getCode().equals(baseModuleResourceListResponseData.getCode()) && baseModuleResourceListResponseData.getData() != null){
-            resourcesTemplate.delete(baseUser.getId() + "-menu");
+            resourcesTemplate.delete(baseUser.getUserId() + "-menu");
             baseModuleResourceListResponseData.getData().forEach(e -> {
-                resourcesTemplate.opsForList().leftPush(baseUser.getId() + "-menu", e);
+                resourcesTemplate.opsForList().leftPush(baseUser.getUserId() + "-menu", e);
             });
         }
 
         // 返回带有用户权限信息的User
         org.springframework.security.core.userdetails.User user =  new org.springframework.security.core.userdetails.User(baseUser.getUserName(),
-                baseUser.getPassword(), isActive(baseUser.getActive()), true, true, true, authorities);
+                baseUser.getPassword(), isActive(baseUser.getUserEnabled()), true, true, true, authorities);
         return new BaseUserDetail(baseUser, user);
     }
 
@@ -116,13 +116,13 @@ public class BaseUserDetailService implements UserDetailsService {
     private List<GrantedAuthority> convertToAuthorities(BaseUser baseUser, List<BaseRole> roles) {
         List<GrantedAuthority> authorities = new ArrayList();
         // 清除 Redis 中用户的角色
-        redisTemplate.delete(baseUser.getId());
+        redisTemplate.delete(baseUser.getUserId()+"");
         roles.forEach(e -> {
             // 存储用户、角色信息到GrantedAuthority，并放到GrantedAuthority列表
             GrantedAuthority authority = new SimpleGrantedAuthority(e.getRoleCode());
             authorities.add(authority);
             //存储角色到redis
-            redisTemplate.opsForList().rightPush(baseUser.getId(), e);
+            redisTemplate.opsForList().rightPush(baseUser.getUserId()+"", e);
         });
         return authorities;
     }

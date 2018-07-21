@@ -1,178 +1,137 @@
 package com.itsnow.main.api.mapper.model;
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
-@Table(name = "base_user")
+@Table(name = "users")
+@Data
 public class BaseUser implements Serializable {
+
     @Id
-    @Column(name = "ID")
-    private String id;
+    @Column(name = "user_id")
+    private Integer userId;
+
+    @Column(name = "passport_id")
+    private String passportId;
+
+    @Column(name = "account_name")
+    private String accountName;
 
     @Column(name = "USER_NAME")
     private String userName;
 
+    @Column(name = "nick_name")
+    private String nickName;
+
+    @Column(name = "user_email")
+    private String userEmail;
+
+    @Column(name = "user_mobile")
+    private String userMobile;
+
     @Column(name = "PASSWORD")
     private String password;
 
-    @Column(name = "PHONE")
-    private String phone;
+    @Column(name = "pay_password")
+    private String payPassword;
 
-    /**
-     * male 男、female 女
-     */
-    @Column(name = "GENDER")
-    private String gender;
+    @Column(name = "bizunit")
+    private String bizunit;
 
-    @Column(name = "AGE")
-    private Integer age;
+    @Column(name = "depart_id")
+    private String departId;
 
-    /**
-     * 0 禁用、1 启用
-     */
-    @Column(name = "ACTIVE")
-    private Integer active;
+    @Column(name = "home_phone")
+    private String homePhone;
 
-    @Column(name = "CREATE_DATE")
-    private Date createDate;
+    @Column(name = "work_phone")
+    private String workPhone;
 
-    @Column(name = "UPDATE_DATE")
-    private Date updateDate;
+    @Column(name = "real_name")
+    private String realName;
 
-    /**
-     * @return ID
-     */
+    @Column(name = "identification")
+    private String identification;
+
+    @Column(name = "sex")
+    private String sex;
+
+    @Column(name = "birthday")
+    private String birthday;
+
+    @Column(name = "province")
+    private String province;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "region")
+    private String region;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "zipcode")
+    private String zipcode;
+
+    @Column(name = "qq")
+    private String qq;
+
+    @Column(name = "weixin")
+    private String weixin;
+
+    @Column(name = "user_type")
+    private String userType;
+
+    @Column(name = "rel_user_id")
+    private String relUserId;
+
+    @Column(name = "rel_passport_id")
+    private String relPassportId;
+
+    @Column(name = "rel_username")
+    private String relUsername;
+
+    @Column(name = "user_enabled")
+    private Integer userEnabled;
+
+    @Column(name = "user_expired")
+    private Integer userExpired;
+
+    @Column(name = "user_locked")
+    private Integer userLocked;
+
+    @Column(name = "password_expired")
+    private Integer passwordExpired;
+
+    @Column(name = "email_verified")
+    private Integer emailVerified;
+
+    @Column(name = "mobile_verified")
+    private Integer mobileVerified;
+
+    @Column(name = "activate_email_code")
+    private Integer activateEmailCode;
+
+    @Column(name = "activate_sms_code")
+    private Integer activateSmsCode;
+
+    @Column(name = "created_at")
+    private Date createdAt;
+
+    @Column(name = "updated_at")
+    private Date updatedAt;
+
+    @Column(name = "deleted_at")
+    private Date deletedAt;
+
+
     public String getId() {
-        return id;
-    }
-
-    /**
-     * @param id
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    /**
-     * @return USER_NAME
-     */
-    public String getUserName() {
-        return userName;
-    }
-
-    /**
-     * @param userName
-     */
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    /**
-     * @return PASSWORD
-     */
-    public String getPassword() {
-        return password;
-    }
-
-    /**
-     * @param password
-     */
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    /**
-     * @return PHONE
-     */
-    public String getPhone() {
-        return phone;
-    }
-
-    /**
-     * @param phone
-     */
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    /**
-     * 获取male 男、female 女
-     *
-     * @return GENDER - male 男、female 女
-     */
-    public String getGender() {
-        return gender;
-    }
-
-    /**
-     * 设置male 男、female 女
-     *
-     * @param gender male 男、female 女
-     */
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    /**
-     * @return AGE
-     */
-    public Integer getAge() {
-        return age;
-    }
-
-    /**
-     * @param age
-     */
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    /**
-     * 获取0 禁用、1 启用
-     *
-     * @return ACTIVE - 0 禁用、1 启用
-     */
-    public Integer getActive() {
-        return active;
-    }
-
-    /**
-     * 设置0 禁用、1 启用
-     *
-     * @param active 0 禁用、1 启用
-     */
-    public void setActive(Integer active) {
-        this.active = active;
-    }
-
-    /**
-     * @return CREATE_DATE
-     */
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    /**
-     * @param createDate
-     */
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    /**
-     * @return UPDATE_DATE
-     */
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
-    /**
-     * @param updateDate
-     */
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
+        return userId +"";
     }
 }
