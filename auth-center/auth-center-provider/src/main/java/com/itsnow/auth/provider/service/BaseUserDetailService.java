@@ -80,29 +80,29 @@ public class BaseUserDetailService implements UserDetailsService {
 
 
         // 调用FeignClient查询角色
-        ResponseData<List<BaseRole>> baseRoleListResponseData = baseRoleService.getRoleByUserId(baseUser.getUserId()+"");
-        List<BaseRole> roles;
-        if(baseRoleListResponseData.getData() == null ||  !ResponseCode.SUCCESS.getCode().equals(baseRoleListResponseData.getCode())){
-            logger.error("查询角色失败！");
-            roles = new ArrayList<>();
-        }else {
-            roles = baseRoleListResponseData.getData();
-        }
-
-        //调用FeignClient查询菜单
-        ResponseData<List<BaseModuleResources>> baseModuleResourceListResponseData = baseModuleResourceService.getMenusByUserId(baseUser.getUserId()+"");
-
-        // 获取用户权限列表
-        List<GrantedAuthority> authorities = convertToAuthorities(baseUser, roles);
-
-        // 存储菜单到redis
-        if( ResponseCode.SUCCESS.getCode().equals(baseModuleResourceListResponseData.getCode()) && baseModuleResourceListResponseData.getData() != null){
-            resourcesTemplate.delete(baseUser.getUserId() + "-menu");
-            baseModuleResourceListResponseData.getData().forEach(e -> {
-                resourcesTemplate.opsForList().leftPush(baseUser.getUserId() + "-menu", e);
-            });
-        }
-
+//        ResponseData<List<BaseRole>> baseRoleListResponseData = baseRoleService.getRoleByUserId(baseUser.getUserId()+"");
+//        List<BaseRole> roles;
+//        if(baseRoleListResponseData.getData() == null ||  !ResponseCode.SUCCESS.getCode().equals(baseRoleListResponseData.getCode())){
+//            logger.error("查询角色失败！");
+//            roles = new ArrayList<>();
+//        }else {
+//            roles = baseRoleListResponseData.getData();
+//        }
+//
+//        //调用FeignClient查询菜单
+//        ResponseData<List<BaseModuleResources>> baseModuleResourceListResponseData = baseModuleResourceService.getMenusByUserId(baseUser.getUserId()+"");
+//
+//        // 获取用户权限列表
+//        List<GrantedAuthority> authorities = convertToAuthorities(baseUser, roles);
+//
+//        // 存储菜单到redis
+//        if( ResponseCode.SUCCESS.getCode().equals(baseModuleResourceListResponseData.getCode()) && baseModuleResourceListResponseData.getData() != null){
+//            resourcesTemplate.delete(baseUser.getUserId() + "-menu");
+//            baseModuleResourceListResponseData.getData().forEach(e -> {
+//                resourcesTemplate.opsForList().leftPush(baseUser.getUserId() + "-menu", e);
+//            });
+//        }
+        List<GrantedAuthority> authorities = new ArrayList();
         // 返回带有用户权限信息的User
         org.springframework.security.core.userdetails.User user =  new org.springframework.security.core.userdetails.User(baseUser.getUserName(),
                 baseUser.getPassword(), isActive(baseUser.getUserEnabled()), true, true, true, authorities);

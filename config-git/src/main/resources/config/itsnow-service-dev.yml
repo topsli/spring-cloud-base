@@ -1,0 +1,20 @@
+server:
+  port: 18009
+
+#      host: localhost
+#      port: 15672
+#      username: guest
+#      password: guest
+# 权限配置  先ignored 要 feign 的API， 如：/user/name/**;  这样feign  的API不需要通过认证就可以访问了。 对外访问要通过 zuul 进行反向代理
+security:
+  ignored: |
+    /user/name/**,/user/add/**
+  oauth2:
+    resource:
+      jwt:
+        key-uri: http://${AUTH_CENTER_HOST:localhost}:${AUTH_CENTER_PORT:18001}/auth/oauth/token_key
+      id: ${spring.application.name}
+      serviceId: ${spring.application.name}
+
+logging:
+  file: logs/itsnow-service.log

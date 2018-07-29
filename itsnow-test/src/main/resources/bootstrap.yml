@@ -1,0 +1,39 @@
+server:
+  port: 8910
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8001/eureka/
+security:
+  oauth2:
+    client:
+      client-id: test
+      client-secret: test
+    resource:
+      jwt:
+        key-uri: http://localhost:18001/auth/oauth/token_key
+      id: ${spring.application.name}
+      serviceId: ${spring.application.name}
+      prefer-token-info: false
+
+spring:
+  application:
+    name: itsnow-test
+#  cloud:
+#    config:
+#      fail-fast: true
+#      discovery:
+#        service-id: itsnow-config
+#        enabled: true
+#      profile: dev
+#      label: master
+
+
+
+feign:
+  httpclient:
+    enabled: ture
+

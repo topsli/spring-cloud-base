@@ -13,11 +13,15 @@ zuul:
     main-data:
       path: /api/main-data/**
       serviceId: main-data
+    itsnow-service:
+      path: /api/itsnow-service/**
+      serviceId: itsnow-service
 
 proxy:
   auth:
     routes:
       main-data: oauth2
+      itsnow-service: oauth2
 
 security:
   ignored: |

@@ -32,6 +32,8 @@
         <module>visul</module>
         <module>mc-service</module>
         <module>server-center</module>
+        <module>itsnow-service</module>
+        <module>itsnow-test</module>
     </modules>
 
     <dependencyManagement>
