@@ -1,16 +1,32 @@
+server:
+  port: 8910
+
 spring:
   application:
     name: itsnow-service
   profiles:
     active: dev
-  cloud:
-    config:
-      fail-fast: true
-      discovery:
-        service-id: config-server
-        enabled: true
-      profile: ${spring.profiles.active}
-      label: ${spring.profiles.active}
+#  cloud:
+#    config:
+#      fail-fast: true
+#      discovery:
+#        service-id: config-server
+#        enabled: true
+#      profile: ${spring.profiles.active}
+#      label: ${spring.profiles.active}
+
+security:
+  oauth2:
+    client:
+      client-id: test
+      client-secret: test
+      access-token-uri: http://localhost:18001/auth/oauth/token
+    resource:
+      jwt:
+        key-uri: http://localhost:18001/auth/oauth/token_key
+      id: ${spring.application.name}
+      serviceId: ${spring.application.name}
+      prefer-token-info: false
 
 eureka:
   client:
