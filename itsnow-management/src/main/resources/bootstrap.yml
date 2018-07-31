@@ -1,0 +1,68 @@
+
+
+
+server:
+  port: 18007
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+
+# 数据源配置
+
+spring:
+  application:
+    name: itsnow-management
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/sso?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+      max-active: 20
+      initial-size: 1
+      max-wait: 60000
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      filters: stat, wall
+      # 监控配置
+      web-stat-filter:
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+      stat-view-servlet:
+        url-pattern: /druid/*
+        reset-enable: false
+        login-username: root
+        login-password: 123456
+  redis:
+      database: 0
+      host: localhost
+      port: 6379
+
+# 权限配置
+security:
+  ignored: |
+    /css/**,/js/**,/favicon.ico,/webjars/**,/images/**
+  oauth2:
+    client:
+      client-id: test
+      client-secret: test
+      access-token-uri: http://localhost:18001/auth/oauth/token
+    resource:
+      jwt:
+        key-uri: http://localhost:18001/auth/oauth/token_key
+      id: ${spring.application.name}
+      serviceId: ${spring.application.name}
+# mybatis 配置
+mybatis:
+  type-aliases-package: com.itsnow.management.entity
+  mapper-locations: classpath:mybatis/mapper/*.xml
