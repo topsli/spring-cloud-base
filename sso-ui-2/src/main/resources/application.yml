@@ -1,0 +1,20 @@
+server:
+    port: 9093
+    context-path: /ui2
+#    session:
+#      cookie:
+#        name: UISESSION
+security:
+  basic:
+    enabled: false
+  oauth2:
+    client:
+      clientId: test
+      clientSecret: test
+      accessTokenUri: http://localhost:18001/auth/oauth/token
+      userAuthorizationUri: http://localhost:18001/auth/oauth/authorize
+    resource:
+      userInfoUri: http://localhost:18001/auth/user
+spring:
+  thymeleaf:
+    cache: false
