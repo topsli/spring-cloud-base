@@ -1,8 +1,12 @@
 package com.itsnow.auth.provider.config.web;
 
+import com.itsnow.auth.api.model.OauthClientDetails;
+import com.itsnow.auth.api.pojo.ResponseCode;
+
+
+import com.itsnow.auth.provider.service.OauthClientDetailsService;
 import com.itsnow.common.pojo.ResponseData;
-import com.itsnow.main.api.pojo.ResponseCode;
-import com.itsnow.main.client.BaseClientService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -24,9 +29,11 @@ import java.util.Map;
 @SessionAttributes({"authorizationRequest"})
 public class MvcController {
 
-    @Autowired
-    private BaseClientService baseClientService;
+//    @Autowired
+//    private BaseClientService baseClientService;
 
+    @Autowired
+    private OauthClientDetailsService oauthClientDetailsService;
     /**
      * 登出回调
      * @param request
@@ -79,9 +86,9 @@ public class MvcController {
                 .getUsername();
         model.put("userName", userName);
         // 获取全部客户端应用
-        ResponseData responseData = baseClientService.getAllClient();
-        if(ResponseCode.SUCCESS.getCode().equals(responseData.getCode()) && responseData.getData() != null) {
-            model.put("client",responseData.getData());
+        List<OauthClientDetails> list = oauthClientDetailsService.selectAll();
+        if(list != null) {
+            model.put("client",list);
         } else {
             model.put("client",new ArrayList<>());
         }

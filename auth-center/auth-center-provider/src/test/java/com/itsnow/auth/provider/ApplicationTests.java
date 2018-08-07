@@ -1,6 +1,7 @@
 package com.itsnow.auth.provider;
 
-import com.itsnow.main.api.mapper.model.BaseRole;
+
+//import com.itsnow.auth.api.model.BaseRole;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class ApplicationTests {
 
-    @Autowired
-    private RedisTemplate<String, BaseRole> baseRoleTemplate;
+//    @Autowired
+//    private RedisTemplate<String, BaseRole> baseRoleTemplate;
 
     @Test
     public void test() throws Exception {

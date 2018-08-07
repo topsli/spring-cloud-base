@@ -1,6 +1,7 @@
 package com.itsnow.auth.api.pojo.auth;
 
-import com.itsnow.main.api.mapper.model.BaseUser;
+
+import com.itsnow.auth.api.model.BaseUser;
 import org.springframework.security.core.CredentialsContainer;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;

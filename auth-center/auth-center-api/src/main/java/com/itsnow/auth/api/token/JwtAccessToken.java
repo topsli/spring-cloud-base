@@ -1,9 +1,10 @@
 package com.itsnow.auth.api.token;
 
+import com.itsnow.auth.api.model.BaseUser;
 import com.itsnow.auth.api.pojo.Constant;
 import com.itsnow.auth.api.pojo.auth.BaseUserDetail;
 import com.itsnow.common.utils.JsonUtils;
-import com.itsnow.main.api.mapper.model.BaseUser;
+
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
