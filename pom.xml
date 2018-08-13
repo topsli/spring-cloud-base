@@ -34,6 +34,17 @@
         <module>server-center</module>
         <module>itsnow-service</module>
         <module>itsnow-test</module>
+        <module>itsnow-management</module>
+        <module>itsnow-jsp</module>
+        <module>sso-auth-server</module>
+        <module>sso-ui</module>
+        <module>sso-ui-2</module>
+
+        <!--  oauth 单点登录与登出 -->
+        <module>oauth-sso-auth</module>
+        <module>oauth-sso-resource</module>
+        <module>oauth-sso-ui</module>
+        <module>oauth-sso-ui2</module>
     </modules>
 
     <dependencyManagement>
