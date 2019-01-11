@@ -1,7 +1,7 @@
 package com.itsnow.ui.dto;
 
 /**
- * Created by jjmendoza on 14/7/2017.
+ * Created by Xuekun_Li on 2018/8/10.
  */
 public class NoteDTO {
     private long id;

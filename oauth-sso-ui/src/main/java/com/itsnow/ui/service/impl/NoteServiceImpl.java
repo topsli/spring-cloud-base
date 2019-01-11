@@ -11,9 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
-/**
- * Created by jjmendoza on 18/7/2017.
- */
+
 @Service
 public class NoteServiceImpl implements NoteService {
     @Autowired

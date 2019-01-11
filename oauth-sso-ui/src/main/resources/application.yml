@@ -1,4 +1,26 @@
-auth-server: http://localhost:9999/authserver
+#auth-server: http://localhost:9999/authserver
+#resource-server: http://localhost:7777/resource
+#server:
+#  port: 8181
+#security:
+#  basic:
+#    enabled: false
+#  oauth2:
+#    client:
+#      client-id: oauth2_client
+#      client-secret: oauth2_client_secret
+#      access-token-uri: ${auth-server}/oauth/token
+#      user-authorization-uri: ${auth-server}/oauth/authorize
+#      scope: read, write
+#      authorized-grant-types: authorization_code
+#    resource:
+#      token-info-uri: ${auth-server}/oauth/check_token
+#logging:
+#  level:
+#    org.springframework.security: DEBUG
+
+
+auth-server: http://localhost:18001/auth
 resource-server: http://localhost:7777/resource
 server:
   port: 8181
@@ -7,11 +29,11 @@ security:
     enabled: false
   oauth2:
     client:
-      client-id: oauth2_client
-      client-secret: oauth2_client_secret
+      client-id: test
+      client-secret: test
       access-token-uri: ${auth-server}/oauth/token
       user-authorization-uri: ${auth-server}/oauth/authorize
-      scope: read, write
+      scope: user
       authorized-grant-types: authorization_code
     resource:
       token-info-uri: ${auth-server}/oauth/check_token
