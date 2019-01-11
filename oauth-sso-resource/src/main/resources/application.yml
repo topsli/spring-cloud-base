@@ -1,4 +1,22 @@
-auth-server: http://localhost:9999/authserver
+#auth-server: http://localhost:9999/authserver
+#server:
+#  port: 7777
+#  context-path: /resource
+#spring:
+#  datasource:
+#    platform: h2
+#security:
+#  oauth2:
+#    client:
+#      client-id: oauth2_client
+#      client-secret: oauth2_client_secret
+#    resource:
+#      token-info-uri: ${auth-server}/oauth/check_token
+#logging:
+#  level:
+#    org.springframework.security: DEBUG
+
+auth-server: http://localhost:18001/auth
 server:
   port: 7777
   context-path: /resource
@@ -8,8 +26,8 @@ spring:
 security:
   oauth2:
     client:
-      client-id: oauth2_client
-      client-secret: oauth2_client_secret
+      client-id: test
+      client-secret: test
     resource:
       token-info-uri: ${auth-server}/oauth/check_token
 logging:
