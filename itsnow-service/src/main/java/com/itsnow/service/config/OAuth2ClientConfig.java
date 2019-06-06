@@ -1,6 +1,8 @@
 package com.itsnow.service.config;
 
 import org.springframework.beans.factory.annotation.Value;
+
+//import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,13 +20,13 @@ import org.springframework.web.client.RestTemplate;
 public class OAuth2ClientConfig {
 
     @Value("${security.oauth2.client.client-id}")
-    private String oAuth2ClientId;
+    private String oAuth2ClientId = "test";
 
     @Value("${security.oauth2.client.client-secret}")
-    private String oAuth2ClientSecret;
+    private String oAuth2ClientSecret = "test";
 
     @Value("${security.oauth2.client.access-token-uri}")
-    private String accessTokenUri;
+    private String accessTokenUri = "http://localhost:18001/auth/oauth/token";
 
     @Bean
     @LoadBalanced // 根据注册中心注册的服务名来查询

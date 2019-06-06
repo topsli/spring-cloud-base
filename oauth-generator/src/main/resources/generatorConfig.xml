@@ -7,13 +7,19 @@
 	<!--mysql 连接数据库jar 这里选择自己本地位置-->
 	<classPathEntry location="C:\Users\win7\.m2\repository\mysql\mysql-connector-java\5.1.35\mysql-connector-java-5.1.35.jar" />
 	<context id="testTables" targetRuntime="MyBatis3">
-		<commentGenerator>
-			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
-			<property name="suppressAllComments" value="true" />
+
+		<!-- 这里的type里写的是你的实现类的类全类名,注：如果不配置type属性,则会使用默认的CommentGenerator实现类DefaultCommentGenerator -->
+		<commentGenerator >
+			<!-- 去除自动生成的注释 -->
+			 <property name="suppressAllComments" value="true" />
+
+			<!-- 是否生成注释代时间戳-->
+			<!--<property name="suppressDate" value="true"/>-->
 		</commentGenerator>
+
 		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-						connectionURL="jdbc:mysql://localhost:3306/sso" userId="root"
+						connectionURL="jdbc:mysql://localhost:3306/itsnow_platform" userId="root"
 						password="123456">
 		</jdbcConnection>
 		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
@@ -23,7 +29,7 @@
 		</javaTypeResolver>
 
 		<!-- targetProject:生成PO类的位置 -->
-		<javaModelGenerator targetPackage="com.itsnow.management.pojo"
+		<javaModelGenerator targetPackage="com.itsnow.cmdb.entity"
 							targetProject="src/main/java">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
@@ -34,20 +40,42 @@
            如果maven工程只是单独的一个工程，targetProject="src/main/java"
            若果maven工程是分模块的工程，targetProject="所属模块的名称"，例如：
            targetProject="ecps-manager-mapper"，下同-->
-		<sqlMapGenerator targetPackage="com.itsnow.management.mapper"
+		<sqlMapGenerator targetPackage="com.itsnow.cmdb.mapper"
 						 targetProject="src/main/java">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
 		</sqlMapGenerator>
 		<!-- targetPackage：mapper接口生成的位置 -->
 		<javaClientGenerator type="XMLMAPPER"
-							 targetPackage="com.itsnow.management.mapper"
+							 targetPackage="com.itsnow.cmdb.mapper"
 							 targetProject="src/main/java">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 		<!-- 指定数据库表 -->
-		<table schema="" tableName="oauth_client"></table>
-		<!--<table schema="" tableName="success_killed"></table>-->
+		<!--<table schema="" tableName="oauth_client"></table>-->
+
+		<!--<table schema="" tableName="obj_role" domainObjectName="Role"></table>-->
+		<!--<table schema="" tableName="obj_group" domainObjectName="Group"></table>-->
+		<!--
+                <table schema="" tableName="obj_organization" domainObjectName="Organization"></table>-->
+        <!--<table schema="" tableName="obj_menu" domainObjectName="Module"></table>-->
+
+		<!--<table schema="" tableName="feature" domainObjectName="Feature"></table>-->
+		<!--<table schema="" tableName="license" domainObjectName="License"></table>-->
+
+		<!--<table schema="" tableName="license_detail" domainObjectName="LicenseDetail"></table>-->
+
+		<!--<table schema="" tableName="user_role" domainObjectName="UserRole"></table>-->
+		<table schema="" tableName="cmdb_obj_tenant" domainObjectName="Tenant"></table>
+
+		   <!--<table tableName="CTAS_FEE_BASE" domainObjectName="FeeBase"-->
+		   <!--enableCountByExample="false" enableUpdateByExample="false"-->
+		   <!--enableDeleteByExample="false" enableSelectByExample="false"-->
+		   <!--selectByExampleQueryId="false">-->
+		   <!--<columnRenamingRule searchString="^D_"-->
+		   <!--replaceString=""/>-->
+		<!--</table>-->
+
 	</context>
 </generatorConfiguration>

@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api':{
-        target: 'http://127.0.0.1:18000',
+        target: 'http://127.0.0.1:18001',
         changeOrigin: true // 必须，为true的话，请求的header将会设置为匹配目标服务器的规则（Access-Control-Allow-Origin）
       }
     },
@@ -29,6 +29,7 @@ module.exports = {
     // If true, your code will be linted during bundling and
     // linting errors and warnings will be shown in the console.
     useEslint: true,
+
     // If true, eslint errors and warnings will also be shown in the error overlay
     // in the browser.
     showEslintErrorsInOverlay: false,

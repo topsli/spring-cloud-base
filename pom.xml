@@ -45,6 +45,12 @@
         <module>oauth-sso-resource</module>
         <module>oauth-sso-ui</module>
         <module>oauth-sso-ui2</module>
+        <module>oauth-sso-ws</module>
+        <module>oauth-generator</module>
+        <module>springboot-admin-server</module>
+        <module>springboot-admin-client</module>
+        <module>oauth-common</module>
+        <module>itsnow-cmdb</module>
     </modules>
 
     <dependencyManagement>

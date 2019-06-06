@@ -1,8 +1,7 @@
 package com.itsnow.auth.spring.boot.autoconfigure.config;
 
 import com.itsnow.auth.api.config.RedisObjectSerializer;
-import com.itsnow.main.api.mapper.model.BaseModuleResources;
-import com.itsnow.main.api.mapper.model.BaseRole;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

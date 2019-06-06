@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: spring-boot-client
+  boot:
+    admin:
+      client:
+        url: http://localhost:8080
+
+
+# tag::configuration-eureka[]
+eureka:   #<1>
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: /actuator/health
+    metadata-map:
+      startup: ${random.int}    #needed to trigger info and endpoint update after restart
+  client:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: http://localhost:18000/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+server:
+  port: 18012

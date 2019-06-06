@@ -1,5 +1,6 @@
 server:
   port: 8910
+  context-path: /itsnow-service
 
 spring:
   application:
@@ -27,8 +28,9 @@ security:
       id: ${spring.application.name}
       serviceId: ${spring.application.name}
       prefer-token-info: false
+  ignored: /swagger-resources/configuration/ui/**,/swagger-resources/**,
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8001/eureka/
+      defaultZone: http://localhost:18000/eureka

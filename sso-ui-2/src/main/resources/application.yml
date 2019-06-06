@@ -14,7 +14,7 @@ security:
       accessTokenUri: http://localhost:18001/auth/oauth/token
       userAuthorizationUri: http://localhost:18001/auth/oauth/authorize
     resource:
-      userInfoUri: http://localhost:18001/auth/user
+      userInfoUri: http://localhost:18001/auth/user/me
 spring:
   thymeleaf:
     cache: false

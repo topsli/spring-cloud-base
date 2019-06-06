@@ -1,6 +1,7 @@
 package com.itsnow.service.component;
 
 //import com.itsnow.service.service.OperationDataService;
+
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.web.client.RestTemplate;
@@ -21,7 +22,7 @@ public class UserInfoTask {
             @Override
             public void run() {
                 try {
-                    syncUser();
+                   // syncUser();
                 } catch (Exception e) {
                     System.out.println(e);
                 }
@@ -29,9 +30,10 @@ public class UserInfoTask {
         }, DateUtils.addSeconds(new Date(), 10), 12000);
     }
 
+    Object obj1 = "{'pageSize':10,'pageNum':1}";
 
     private void syncUser() {
-        Object obj = restTemplate.getForObject("http://OPERATION/operation/api/cmdb/metadata/superClass/MC_SSHPassword",Object.class);
+        Object obj = restTemplate.postForObject("http://PASSPORT-MANAGEMENT123/passport-management/api/v1/role/list",obj1,Object.class);
         System.out.println("====call syncUser method:"+obj.toString());
     }
 }

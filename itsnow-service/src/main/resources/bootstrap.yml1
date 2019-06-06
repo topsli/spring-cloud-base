@@ -1,0 +1,49 @@
+server:
+  port: 8989
+
+spring:
+  application:
+    name: itsnow_service
+  profiles:
+    active: dev
+#  cloud:
+#    config:
+#      fail-fast: true
+#      discovery:
+#        service-id: config-server
+#        enabled: true
+#      profile: ${spring.profiles.active}
+#      label: ${spring.profiles.active}
+auth-server: http://passport2-l.itsnow.com/auth
+security:
+  basic:
+    enabled: false
+  oauth2:
+    client:
+      client-id: test
+      client-secret: test
+      access-token-uri: ${auth-server}/oauth/token
+      user-authorization-uri: ${auth-server}/oauth/authorize
+      scope: user
+      authorized-grant-types: authorization_code
+    resource:
+      token-info-uri: ${auth-server}/oauth/check_token
+
+#security:
+#  oauth2:
+#    client:
+#      client-id: test
+#      client-secret: test
+#      access-token-uri: http://localhost:18001/auth/oauth/token
+#    resource:
+#      jwt:
+#        key-uri: http://localhost:18001/auth/oauth/token_key
+#      id: ${spring.application.name}
+#      serviceId: ${spring.application.name}
+#      prefer-token-info: false
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:18000/eureka/

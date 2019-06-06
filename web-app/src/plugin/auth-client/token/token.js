@@ -15,7 +15,9 @@ export default {
       grant_type: 'authorization_code',
       code: code,
       client: Config.appId,
-      redirect_uri: Config.baseUrl
+      redirect_uri: Config.baseUrl,
+      username: Config.appId,
+      password: Config.appSecret
     }, {
       transformRequest: [function (data) {
         return querystring.stringify(data)

@@ -17,7 +17,7 @@ import java.util.Map;
  */
 
 @EnableAuthorizationServer
-@EnableFeignClients("com.itsnow.auth.provider.client")
+@EnableFeignClients("com.itsnow.auth.provider")
 @EnableEurekaClient
 @SpringBootApplication
 @RestController

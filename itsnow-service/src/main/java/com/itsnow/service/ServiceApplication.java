@@ -18,9 +18,9 @@ import org.springframework.web.client.RestTemplate;
 @EnableResourceServer
 @EnableEurekaClient
 @SpringCloudApplication
-public class Application {
+public class ServiceApplication {
     public static void main (String[] args){
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(ServiceApplication.class, args);
     }
 
     @Bean
